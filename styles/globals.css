@@ -1,16 +1,20 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.grecaptcha-badge {
+  visibility: hidden;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.scroll-top-animation {
+  animation: scroll-top 10s linear infinite;
 }
 
-* {
-  box-sizing: border-box;
+@keyframes scroll-top {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100vh);
+  }
 }
