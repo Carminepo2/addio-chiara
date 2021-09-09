@@ -11,7 +11,7 @@ const fetcher = (url: string) => fetch(url).then((r) => r.json());
 const arrayMessaggiScorrevoli = new Array(1).fill("");
 
 export default function Index() {
-  const { data, error } = useSWR("/api/messaggi", fetcher, { refreshInterval: settings.SECONDI_TRANSIZIONE * 1000 });
+  const { data, error } = useSWR("/api/messaggi", fetcher, { refreshInterval: 1000 });
 
   return (
     <>
