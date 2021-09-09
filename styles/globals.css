@@ -12,9 +12,9 @@
 
 @keyframes scroll-top {
   from {
-    transform: translateY(-100%);
+    transform: translateY(100vh);
   }
   to {
-    transform: translateY(100vh);
+    transform: translateY(-110%);
   }
 }

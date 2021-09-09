@@ -4,15 +4,14 @@ import ModaleMessaggio from "../components/ModaleMessaggio";
 import useSWR from "swr";
 import { useEffect, useRef, useState } from "react";
 import Player from "../components/Player";
+import settings from "../settings/index.json";
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 const arrayMessaggiScorrevoli = new Array(1).fill("");
 
 export default function Index() {
-  const { data, error } = useSWR("/api/messaggi", fetcher, { refreshInterval: 10000 });
-
-  console.log(data);
+  const { data, error } = useSWR("/api/messaggi", fetcher, { refreshInterval: settings.SECONDI_TRANSIZIONE * 1000 });
 
   return (
     <>
@@ -32,21 +31,27 @@ export default function Index() {
 
 const Messaggio = ({ messaggi }: { messaggi: any }) => {
   const intervalRef = useRef<NodeJS.Timer | null>(null);
-  const [chosenMessage, setChosenMessage] = useState(messaggi[Math.floor(Math.random() * messaggi.length)]);
+  const [chosenMessage, setChosenMessage] = useState({ nome: "", messaggio: "" });
   useEffect(() => {
     function changeMessage() {
-      const randomIndex = Math.floor(Math.random() * messaggi.length);
-      setChosenMessage(messaggi[randomIndex]);
+      if (messaggi.length > 0) {
+        console.log(messaggi);
+        const randomIndex = Math.floor(Math.random() * messaggi.length);
+        setChosenMessage(messaggi[randomIndex]);
+      }
     }
-    intervalRef.current = setInterval(changeMessage, 10000);
+    intervalRef.current = setInterval(changeMessage, settings.SECONDI_TRANSIZIONE * 1000);
     return () => {
       clearInterval(intervalRef.current!);
     };
-  });
+  }, [messaggi]);
+
+  if (!chosenMessage.nome && !chosenMessage.messaggio) return null;
+
   return (
     <div className="text-white relative z-20 scroll-top-animation inline-block max-w-xl ml-4 sm:ml-8">
       <div className="text-lg sm:text-2xl lg:text-4xl xl:text-5xl font-bold">&quot;{chosenMessage.messaggio}&quot;</div>
-      <div>- {chosenMessage.nome}</div>
+      <div className="text-base sm:text-xl mt-2">- {chosenMessage.nome}</div>
     </div>
   );
 };
