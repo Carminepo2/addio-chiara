@@ -35,7 +35,6 @@ const Messaggio = ({ messaggi }: { messaggi: any }) => {
   useEffect(() => {
     function changeMessage() {
       if (messaggi.length > 0) {
-        console.log(messaggi);
         const randomIndex = Math.floor(Math.random() * messaggi.length);
         setChosenMessage(messaggi[randomIndex]);
       }
@@ -44,7 +43,7 @@ const Messaggio = ({ messaggi }: { messaggi: any }) => {
     return () => {
       clearInterval(intervalRef.current!);
     };
-  }, [messaggi]);
+  }, []);
 
   if (!chosenMessage.nome && !chosenMessage.messaggio) return null;
 
