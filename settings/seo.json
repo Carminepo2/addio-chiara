@@ -1,0 +1,20 @@
+{
+  "title": "Addio Chiara",
+  "description": "Un caro saluto dai tuoi amichetti. So che sei abbastanza esigente ma spero che questo riesca ad intrattenerti abbastanza fino a quando non ci reincontreremo.",
+  "openGraph": {
+    "title": "Addio Chiara",
+    "description": "Un caro saluto dai tuoi amichetti. So che sei abbastanza esigente ma spero che questo riesca ad intrattenerti abbastanza fino a quando non ci reincontreremo.",
+    "type": "website",
+    "locale": "it_IT",
+    "url": "https://addio-chiara.vercel.app/",
+    "site_name": "Addio Chiara",
+    "images": [
+      {
+        "url": "/chiara.jpeg",
+        "width": 800,
+        "height": 600,
+        "alt": "Chi Ara"
+      }
+    ]
+  }
+}

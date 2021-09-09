@@ -51,7 +51,7 @@ const Messaggio = ({ messaggi }: { messaggi: any }) => {
   return (
     <div className="text-white relative z-20 scroll-top-animation inline-block max-w-xl ml-4 sm:ml-8">
       <div className="text-lg sm:text-2xl lg:text-4xl xl:text-5xl font-bold">&quot;{chosenMessage.messaggio}&quot;</div>
-      <div className="text-base sm:text-xl mt-2">- {chosenMessage.nome}</div>
+      <div className="text-base sm:text-xl sm:mt-1 xl:mt-2">- {chosenMessage.nome}</div>
     </div>
   );
 };
