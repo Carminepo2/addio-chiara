@@ -11,7 +11,7 @@ const fetcher = (url: string) => fetch(url).then((r) => r.json());
 const arrayMessaggiScorrevoli = new Array(1).fill("");
 
 export default function Index() {
-  const { data, error } = useSWR("/api/messaggi", fetcher, { refreshInterval: 1000 });
+  const { data, error } = useSWR("/api/messaggi", fetcher, { refreshInterval: 10000 });
 
   return (
     <>
@@ -43,6 +43,7 @@ const Messaggio = ({ messaggi }: { messaggi: any }) => {
     return () => {
       clearInterval(intervalRef.current!);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!chosenMessage.nome && !chosenMessage.messaggio) return null;

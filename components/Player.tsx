@@ -1,8 +1,12 @@
-import React from "react";
-import ReactAudioPlayer from "react-audio-player";
+import React, { useEffect } from "react";
 
 function Player() {
-  return <ReactAudioPlayer src="/per_dimenticare.mp3" autoPlay loop />;
+  useEffect(() => {
+    const audio = new Audio("/per_dimenticare.mp3");
+    audio.loop = true;
+    audio.play();
+  }, []);
+  return <></>;
 }
 
 export default Player;
